@@ -45,8 +45,13 @@ const query = {
         });
     },
     callSporter: function(wikidataUri) {
-        const elSporters = document.querySelector('#sporters')
-            elSporters.classList.add('sporterListShow')
+        const elSporters = document.querySelector('#sporters'),
+            back = document.querySelector('.back')
+        elSporters.classList.add('sporterListShow')
+        back.addEventListener('click', function() {
+            elSporters.classList.remove('sporterListShow')
+        })
+
         const endpointUrl = 'https://query.wikidata.org/sparql'
         wikidataUri = wikidataUri.replace('http://www.wikidata.org/entity/', '')
         const sparqlQuery = 
