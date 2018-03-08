@@ -41,7 +41,7 @@ const query = {
                     query.callSporter(wikidataUri);
                 })
             }
-            search.sport();
+            search.sport(); 
         });
     },
     callSporter: function(wikidataUri) {

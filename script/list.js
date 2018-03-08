@@ -2,7 +2,7 @@ import query from './queryCall.js'
 
 const list = {
     sport: function(results) {
-        const elSportList = document.querySelector('#sporter')
+        const elSportList = document.querySelector('#sporter') 
         const p = document.createElement('p'),
             a = document.createElement('a'),
             pdiv = document.createElement('div')

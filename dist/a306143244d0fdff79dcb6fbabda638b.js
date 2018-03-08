@@ -268,7 +268,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     };
     app.init();
 })();
-},{"./queryCall.js":5}],20:[function(require,module,exports) {
+},{"./queryCall.js":5}],23:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -391,5 +391,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[20,3])
+},{}]},{},[23,3])
 //# sourceMappingURL=/dist/a306143244d0fdff79dcb6fbabda638b.map

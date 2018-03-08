@@ -95,7 +95,7 @@ body .sporterListShow {
     left: 1em;
     font-family: 'Nunito';
     text-transform: uppercase;
-    text-decoration: underline;
+    text-decoration: underline; 
 }
 
 #sportList div a,

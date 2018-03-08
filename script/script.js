@@ -5,7 +5,7 @@ import query from './queryCall.js'
     'strict mode'
     const app = {
         init: function() {
-            query.callSport()
+            query.callSport() 
         },
     }
     app.init()
