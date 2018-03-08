@@ -1,19 +1,17 @@
 import query from './queryCall.js'
 
 const list = {
-    sport: function(results) {
-        const elSportList = document.querySelector('#sporter') 
+    sport: function(result) {
+        
         const p = document.createElement('p'),
             a = document.createElement('a'),
+            elSportList = document.querySelector('#sportList'),
             pdiv = document.createElement('div')
-            console.log(results)
-            a.innerHTML = results.value
-            p.classList.add('sport')
-            p.appendChild(a) 
-            pdiv.appendChild(p)
-            elSportList.appendChild(pdiv)
-
-            return sportsProccesed++
+        a.innerHTML = (result.sportclassLabel.value)
+        p.classList.add('sport')
+        p.appendChild(a) 
+        pdiv.appendChild(p)
+        elSportList.appendChild(pdiv)
                 
     },
     sporter: function() {

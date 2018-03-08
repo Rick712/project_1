@@ -21,24 +21,21 @@ const query = {
             
             const { head: { vars }, results } = json,
                 elSportList = document.querySelector('#sportList')
-            let sportsProccesed = 0
 
             for ( const result of results.bindings ) {
 
                 const p = document.createElement('p'),
-                        a = document.createElement('a'),
-                pdiv = document.createElement('div')
+                    a = document.createElement('a'),
+                    pdiv = document.createElement('div')
                 a.innerHTML = (result.sportclassLabel.value)
                 p.classList.add('sport')
                 p.appendChild(a) 
                 pdiv.appendChild(p)
                 elSportList.appendChild(pdiv)
-                sportsProccesed++
 
                 pdiv.addEventListener('click', function() {
                     const wikidataUri = result.sportclass.value
-                    console.log(wikidataUri)
-                    query.callSporter(wikidataUri);
+                    query.callSporter(wikidataUri)
                 })
             }
             search.sport(); 
@@ -61,7 +58,7 @@ const query = {
         wikidataUri = wikidataUri.replace('http://www.wikidata.org/entity/', '')
         const sparqlQuery = 
         
-        `SELECT ?personLabel WHERE {
+        `SELECT ?personLabel ?person WHERE {
             ?person wdt:P19 wd:Q727 .
             ?person wdt:P106 wd:` + wikidataUri + ` .
             SERVICE wikibase:label { bd:serviceParam wikibase:language "nl". }
@@ -79,14 +76,20 @@ const query = {
             for ( const result of results.bindings ) {
         
                 const p = document.createElement('p'),
-                elSporterList = document.querySelector('.sporterList'),
-                a = document.createElement('a'),
-            pdiv = document.createElement('div')
-            a.innerHTML = (result.personLabel.value)
-            p.classList.add('sporter')
-            p.appendChild(a) 
-            pdiv.appendChild(p)
-            elSporterList.appendChild(pdiv)
+                    elSporterList = document.querySelector('.sporterList'),
+                    a = document.createElement('a'),
+                    pdiv = document.createElement('div')
+                a.innerHTML = (result.personLabel.value)
+                p.classList.add('sporter')
+                p.appendChild(a) 
+                pdiv.appendChild(p)
+                elSporterList.appendChild(pdiv)
+
+            pdiv.addEventListener('click', function() {
+                const wikidataUri = result.person.value
+                console.log(wikidataUri)
+                query.callPerson(wikidataUri)
+            })
             
             }
 
@@ -94,6 +97,10 @@ const query = {
 
         });
             
+    },
+
+    callPerson: function() {
+
     }
 }
 

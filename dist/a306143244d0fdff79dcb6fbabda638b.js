@@ -145,8 +145,6 @@ var query = {
                 results = json.results,
                 elSportList = document.querySelector('#sportList');
 
-            var sportsProccesed = 0;
-
             var _loop = function _loop(result) {
 
                 var p = document.createElement('p'),
@@ -157,11 +155,9 @@ var query = {
                 p.appendChild(a);
                 pdiv.appendChild(p);
                 elSportList.appendChild(pdiv);
-                sportsProccesed++;
 
                 pdiv.addEventListener('click', function () {
                     var wikidataUri = result.sportclass.value;
-                    console.log(wikidataUri);
                     query.callSporter(wikidataUri);
                 });
             };
@@ -171,6 +167,7 @@ var query = {
             var _iteratorError = undefined;
 
             try {
+
                 for (var _iterator = results.bindings[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                     var result = _step.value;
 
@@ -209,7 +206,7 @@ var query = {
 
         var endpointUrl = 'https://query.wikidata.org/sparql';
         wikidataUri = wikidataUri.replace('http://www.wikidata.org/entity/', '');
-        var sparqlQuery = 'SELECT ?personLabel WHERE {\n            ?person wdt:P19 wd:Q727 .\n            ?person wdt:P106 wd:' + wikidataUri + ' .\n            SERVICE wikibase:label { bd:serviceParam wikibase:language "nl". }\n            }\n        ORDER BY ?personLabel',
+        var sparqlQuery = 'SELECT ?personLabel ?person WHERE {\n            ?person wdt:P19 wd:Q727 .\n            ?person wdt:P106 wd:' + wikidataUri + ' .\n            SERVICE wikibase:label { bd:serviceParam wikibase:language "nl". }\n            }\n        ORDER BY ?personLabel',
             fullUrl = endpointUrl + '?query=' + encodeURIComponent(sparqlQuery),
             headers = { 'Accept': 'application/sparql-results+json' };
 
@@ -218,6 +215,26 @@ var query = {
         }).then(function (json) {
             var vars = json.head.vars,
                 results = json.results;
+
+            var _loop2 = function _loop2(result) {
+
+                var p = document.createElement('p'),
+                    elSporterList = document.querySelector('.sporterList'),
+                    a = document.createElement('a'),
+                    pdiv = document.createElement('div');
+                a.innerHTML = result.personLabel.value;
+                p.classList.add('sporter');
+                p.appendChild(a);
+                pdiv.appendChild(p);
+                elSporterList.appendChild(pdiv);
+
+                pdiv.addEventListener('click', function () {
+                    var wikidataUri = result.person.value;
+                    console.log(wikidataUri);
+                    query.callPerson(wikidataUri);
+                });
+            };
+
             var _iteratorNormalCompletion2 = true;
             var _didIteratorError2 = false;
             var _iteratorError2 = undefined;
@@ -227,16 +244,7 @@ var query = {
                 for (var _iterator2 = results.bindings[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
                     var result = _step2.value;
 
-
-                    var p = document.createElement('p'),
-                        elSporterList = document.querySelector('.sporterList'),
-                        a = document.createElement('a'),
-                        pdiv = document.createElement('div');
-                    a.innerHTML = result.personLabel.value;
-                    p.classList.add('sporter');
-                    p.appendChild(a);
-                    pdiv.appendChild(p);
-                    elSporterList.appendChild(pdiv);
+                    _loop2(result);
                 }
             } catch (err) {
                 _didIteratorError2 = true;
@@ -255,7 +263,9 @@ var query = {
 
             _search2.default.sporter();
         });
-    }
+    },
+
+    callPerson: function callPerson() {}
 };
 
 exports.default = query;
@@ -278,7 +288,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     };
     app.init();
 })();
-},{"./queryCall.js":5}],26:[function(require,module,exports) {
+},{"./queryCall.js":5}],28:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -401,5 +411,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[26,3])
+},{}]},{},[28,3])
 //# sourceMappingURL=/dist/a306143244d0fdff79dcb6fbabda638b.map
