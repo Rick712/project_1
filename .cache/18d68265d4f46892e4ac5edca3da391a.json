@@ -1,0 +1,1 @@
+{"dependencies":[{"name":"./queryCall.js","loc":{"line":1,"column":18}}],"generated":{"js":"\"use strict\";var e=require(\"./queryCall.js\"),t=u(e);function u(e){return e&&e.__esModule?e:{default:e}}!function(){\"strict mode\";(function(){t.default.call()})()}();"},"hash":"35db500e422352f901d7701b9a31bc42","cacheData":{"env":{}}}

@@ -1,0 +1,119 @@
+body {
+    padding: 40px;
+    text-align: center;
+}
+
+h1,
+h2 {
+    font-family: "Nunito";
+    font-size: 30px;
+}
+
+#sportList {
+    display: grid;
+    grid-template-columns: calc(25% - 2em) calc(25% - 2em) calc(25% - 2em) calc(25% - 2em);
+    grid-template-rows: calc(20% - .5em) calc(20% - .5em) calc(20% - .5em) calc(20% - .5em);
+    grid-row-gap: 2em;
+    grid-column-gap: 2.6em;
+    margin-top: 2em;
+}
+
+#sportList div {
+    padding: 3em 0;
+    background-color: rgb(243, 243, 243);
+    transition: box-shadow .3s ease;
+}
+
+#sportList div:hover {
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+
+}
+
+#sportList div p::first-letter {
+    text-transform: capitalize;
+}
+
+.gone {
+    display: none;
+}
+
+.searchSport,
+.searchName {
+    padding: .5em;
+    font-size: 16px;
+    text-align: center;
+    border-radius: .5em;
+    border: solid rgb(204, 204, 204) .15em;
+    transition: border .3s ease;
+    font-family: 'Nunito';
+}
+
+.searchName::placeholder {
+    color: rgb(204, 204, 204);
+}
+
+.searchName:focus {
+    border: solid black .15em;
+}
+
+#sporters {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: -210vh;
+    bottom: 110vh;
+    transition: 
+    top 1s ease,
+    bottom 1s ease;
+    background-color: white;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+    padding-top: 2.5em;
+}
+
+body .sporterListShow {
+    top: 0 !important;
+    bottom: 0 !important;
+    position: fixed !important;
+}
+
+.sporterList {
+    height: 60vh;
+    overflow-y: scroll;
+    margin-top: 2em;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+
+*:focus {
+    outline: 0;
+}
+
+.back {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    font-family: 'Nunito';
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+#sportList div a,
+.sporterList p {
+    font-weight: 700;
+    font-family: "Nunito"
+}
+
+@media screen and (max-width: 50rem) {
+    #sportList {
+        grid-template-columns: calc(50% - 1em) calc(50% - 1em);
+        grid-row-gap: 1em;
+        grid-column-gap: 1em;
+    }
+}
+
+@media screen and (max-width: 35rem) {
+    #sportList {
+        grid-template-columns: 100%;
+    }
+}
