@@ -50,6 +50,11 @@ const query = {
         elSporters.classList.add('sporterListShow')
         back.addEventListener('click', function() {
             elSporters.classList.remove('sporterListShow')
+            const sporters = document.querySelector('.sporterList')
+            console.log(sporters)
+            setTimeout(() => {
+                sporters.innerHTML = ""
+            }, 1000);
         })
 
         const endpointUrl = 'https://query.wikidata.org/sparql'

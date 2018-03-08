@@ -1,6 +1,7 @@
 body {
     padding: 40px;
     text-align: center;
+    overflow-x: hidden;
 }
 
 h1,
@@ -58,23 +59,25 @@ h2 {
 }
 
 #sporters {
-    position: absolute;
-    right: 0;
-    left: 0;
-    top: -210vh;
-    bottom: 110vh;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: -100vw;
+    left: 100vw;
     transition: 
-    top 1s ease,
-    bottom 1s ease;
+    right 1s ease,
+    left 1s ease;
     background-color: white;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
     padding-top: 2.5em;
 }
 
 body .sporterListShow {
-    top: 0 !important;
-    bottom: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
     position: fixed !important;
+    transition:
+    right 1s ease,
+    left 1s ease;
 }
 
 .sporterList {
