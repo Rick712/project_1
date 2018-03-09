@@ -26,12 +26,14 @@ const query = {
 
                 const p = document.createElement('p'),
                     a = document.createElement('a'),
-                    pdiv = document.createElement('div')
+                    pdiv = document.createElement('div'),
+                    spinner = document.querySelector('.spinner')
                 a.innerHTML = (result.sportclassLabel.value)
                 p.classList.add('sport')
                 p.appendChild(a) 
                 pdiv.appendChild(p)
                 elSportList.appendChild(pdiv)
+                spinner.classList.add('gone')
 
                 pdiv.addEventListener('click', function() {
                     const wikidataUri = result.sportclass.value
@@ -43,9 +45,12 @@ const query = {
     },
     callSporter: function(wikidataUri) {
         const elSporters = document.querySelector('#sporters'),
-            back = document.querySelector('.back')
+            back = document.querySelector('.back'),
+            sportListdiv = document.querySelector('.sportlist')
         elSporters.classList.add('sporterListShow')
+        sportListdiv.classList.add('sportListGone')
         back.addEventListener('click', function() {
+            sportListdiv.classList.remove('sportListGone')
             elSporters.classList.remove('sporterListShow')
             const sporters = document.querySelector('.sporterList')
             console.log(sporters)

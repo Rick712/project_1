@@ -149,12 +149,14 @@ var query = {
 
                 var p = document.createElement('p'),
                     a = document.createElement('a'),
-                    pdiv = document.createElement('div');
+                    pdiv = document.createElement('div'),
+                    spinner = document.querySelector('.spinner');
                 a.innerHTML = result.sportclassLabel.value;
                 p.classList.add('sport');
                 p.appendChild(a);
                 pdiv.appendChild(p);
                 elSportList.appendChild(pdiv);
+                spinner.classList.add('gone');
 
                 pdiv.addEventListener('click', function () {
                     var wikidataUri = result.sportclass.value;
@@ -193,9 +195,12 @@ var query = {
     },
     callSporter: function callSporter(wikidataUri) {
         var elSporters = document.querySelector('#sporters'),
-            back = document.querySelector('.back');
+            back = document.querySelector('.back'),
+            sportListdiv = document.querySelector('.sportlist');
         elSporters.classList.add('sporterListShow');
+        sportListdiv.classList.add('sportListGone');
         back.addEventListener('click', function () {
+            sportListdiv.classList.remove('sportListGone');
             elSporters.classList.remove('sporterListShow');
             var sporters = document.querySelector('.sporterList');
             console.log(sporters);
@@ -288,7 +293,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     };
     app.init();
 })();
-},{"./queryCall.js":5}],28:[function(require,module,exports) {
+},{"./queryCall.js":5}],25:[function(require,module,exports) {
 
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
@@ -310,7 +315,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '59367' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '50631' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -411,5 +416,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id);
   });
 }
-},{}]},{},[28,3])
+},{}]},{},[25,3])
 //# sourceMappingURL=/dist/a306143244d0fdff79dcb6fbabda638b.map
